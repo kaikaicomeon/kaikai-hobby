@@ -1,0 +1,4 @@
+"..\程序\STARTUP.obj",
+"..\程序\点亮LED.obj" 
+TO "..\程序\点亮LED" 
+PRINT(".\Listings\点亮LED.m51") RAMSIZE(256) 
