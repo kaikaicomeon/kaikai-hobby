@@ -1,0 +1,50 @@
+C51 COMPILER V9.54   TIMEBASE                                                              05/13/2021 00:32:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMEBASE
+OBJECT MODULE PLACED IN .\Objects\TimeBase.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE APP\TimeBase\TimeBase.c LARGE OPTIMIZE(8,SPEED) BROWSE MODP2 INCDIR(.\AP
+                    -P\WDT;.\APP\Task;.\APP\TimeBase) DEBUG OBJECTEXTEND PRINT(.\Listings\TimeBase.lst) TABS(2) OBJECT(.\Objects\TimeBase.obj
+                    -)
+
+line level    source
+
+   1          #include "include.h"
+   2          
+   3          void Timer0Init(u8 us)
+   4          {
+   5   1       TMOD = 0X02; //8位自动重装
+   6   1       TL0 = 0X00 ;//定时器初始值
+   7   1       TH0 = (255 - us);//定时器自动重装值
+   8   1       TR0 = 1;//定时器0开始运行
+   9   1       ET0 = 1;//启动定时器0中断
+  10   1       
+  11   1      }
+  12          
+  13          
+  14          void TimeBause() interrupt 1
+  15          {
+  16   1       //250us
+  17   1       static Time = 0;
+  18   1       ++Time;
+  19   1       if(Time >=3)  //1ms
+  20   1       {
+  21   2         Time = 0;
+  22   2         Task_Inquiry();
+  23   2       }
+  24   1      
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    125    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

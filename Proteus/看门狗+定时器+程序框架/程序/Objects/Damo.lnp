@@ -1,0 +1,9 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\WDT.obj",
+".\Objects\TimeBase.obj",
+".\Objects\Task.obj" 
+TO ".\Objects\Damo" 
+PRINT(".\Listings\Damo.m51") RAMSIZE(256) 
+CODE( 0X0000-0X7FFF )
+XDATA( 0X0000-0X00FF )

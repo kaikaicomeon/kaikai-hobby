@@ -1,0 +1,93 @@
+C51 COMPILER V9.54   TASK                                                                  05/13/2021 00:32:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TASK
+OBJECT MODULE PLACED IN .\Objects\Task.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE APP\Task\Task.c LARGE OPTIMIZE(8,SPEED) BROWSE MODP2 INCDIR(.\APP\WDT;.\
+                    -APP\Task;.\APP\TimeBase) DEBUG OBJECTEXTEND PRINT(.\Listings\Task.lst) TABS(2) OBJECT(.\Objects\Task.obj)
+
+line level    source
+
+   1          #include "include.h"
+   2          
+   3          #define TASK_NUM  2
+   4          
+   5          typedef struct
+   6          {
+   7           void (*Function)(void); //函数指针
+   8           u16 inter_cycle;        //周期
+   9           u16 inter_start;        //开始时间
+  10           u16 inter_now;          // 当前时间
+  11           u8 run_flag;           //运行函数标志
+  12          } Task_Strtuct;
+  13          
+  14          void Task_1(void)
+  15          {
+  16   1        P0 = 0x00;
+  17   1      }
+  18          void Task_2(void)
+  19          {
+  20   1        P0 = 0x00;
+  21   1      }
+  22          
+  23          
+  24          static Task_Strtuct Task_Strtuct1[TASK_NUM] =
+  25          {
+  26           { Task_1, 50, 30,0, 0 }, 
+  27           { Task_2, 50, 20,0, 0 } 
+  28          };
+  29          
+  30          void Task_Process(void)
+  31          {
+  32   1        u8 i = 0;
+  33   1        for(i = 0; i < TASK_NUM; i ++)
+  34   1        {
+  35   2         if(Task_Strtuct1[i].run_flag)
+  36   2         {
+  37   3          Task_Strtuct1[i].run_flag = 0;
+  38   3          Task_Strtuct1[i].Function();
+  39   3         }
+  40   2        
+  41   2        }
+  42   1      
+  43   1      }
+  44          
+  45          
+  46          void Task_Inquiry(void)  
+  47          {
+  48   1       u8 i = 0;
+  49   1      
+  50   1          for(i = 0; i < TASK_NUM; i++)  
+  51   1          {
+  52   2      //       if(schedule_task[i].inter_now)  
+  53   2      //     {
+  54   2           ++Task_Strtuct1[i].inter_now;
+C51 COMPILER V9.54   TASK                                                                  05/13/2021 00:32:15 PAGE 2   
+
+  55   2           if(Task_Strtuct1[i].inter_now == Task_Strtuct1[i].inter_start)   
+  56   2           {   
+  57   3            Task_Strtuct1[i].run_flag  = 1;
+  58   3           }
+  59   2           if(Task_Strtuct1[i].inter_now >= Task_Strtuct1[i].inter_cycle)
+  60   2           {
+  61   3            Task_Strtuct1[i].inter_now = 0;
+  62   3           }
+  63   2      //     }
+  64   2          }    
+  65   1      }
+  66          
+  67          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    247    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     20       1
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

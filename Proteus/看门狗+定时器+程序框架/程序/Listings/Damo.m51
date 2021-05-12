@@ -1,0 +1,331 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/13/2021  00:32:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj, .\Objects\WDT.obj, .\Objects\TimeBase.obj, .\Obje
+>> cts\Task.obj TO .\Objects\Damo PRINT (.\Listings\Damo.m51) RAMSIZE (256) CODE (0X0000-0X7FFF) XDATA (0X0000-0X00FF)
+
+
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  .\Objects\WDT.obj (WDT)
+  .\Objects\TimeBase.obj (TIMEBASE)
+  .\Objects\Task.obj (TASK)
+  D:\KEIL_V5\C51\LIB\C51L.LIB (?C_INIT)
+  D:\KEIL_V5\C51\LIB\C51L.LIB (?C?IILDX)
+  D:\KEIL_V5\C51\LIB\C51L.LIB (?C?ICALL)
+
+
+LINK MAP OF MODULE:  .\Objects\Damo (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0014H     UNIT         ?XD?TASK
+            XDATA   0014H     0002H     UNIT         ?XD?TIMEBASE
+            XDATA   0016H     0001H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     009BH     UNIT         ?PR?TASK_INQUIRY?TASK
+            CODE    089BH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0927H     006CH     UNIT         ?PR?TIMEBAUSE?TIMEBASE
+            CODE    0993H     0054H     UNIT         ?PR?TASK_PROCESS?TASK
+            CODE    09E7H     001DH     UNIT         ?C_INITSEG
+            CODE    0A04H     001CH     UNIT         ?C?LIB_CODE
+            CODE    0A20H     0014H     UNIT         ?PR?MAIN?MAIN
+            CODE    0A34H     0011H     UNIT         ?PR?_TIMER0INIT?TIMEBASE
+            CODE    0A45H     0006H     UNIT         ?PR?WDTINIT?WDT
+            CODE    0A4BH     0004H     UNIT         ?PR?ENABLEWDT?WDT
+            CODE    0A4FH     0004H     UNIT         ?PR?CLEARWDT?WDT
+            CODE    0A53H     0004H     UNIT         ?PR?TASK_1?TASK
+            CODE    0A57H     0004H     UNIT         ?PR?TASK_2?TASK
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Damo (?C_STARTUP)
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/13/2021  00:32:15  PAGE 2
+
+
+SEGMENT                            XDATA_GROUP
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                    -----    -----
+  +--> ?PR?_TIMER0INIT?TIMEBASE
+  +--> ?PR?WDTINIT?WDT
+  +--> ?PR?TASK_PROCESS?TASK
+  +--> ?PR?CLEARWDT?WDT
+
+?PR?WDTINIT?WDT                  -----    -----
+  +--> ?PR?ENABLEWDT?WDT
+
+?PR?TASK_PROCESS?TASK            0016H    0001H
+
+?C_INITSEG                       -----    -----
+  +--> ?PR?TASK_1?TASK
+  +--> ?PR?TASK_2?TASK
+
+*** NEW ROOT ***************************************************
+
+?PR?TIMEBAUSE?TIMEBASE           -----    -----
+  +--> ?PR?TASK_INQUIRY?TASK
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Damo (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:089BH         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:089EH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:089BH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/13/2021  00:32:15  PAGE 3
+
+
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:089BH         LINE#         133
+  C:089DH         LINE#         134
+  C:089EH         LINE#         135
+  C:089FH         LINE#         136
+  C:08A1H         LINE#         185
+  C:08A4H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0A20H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0A20H         LINE#         3
+  C:0A20H         LINE#         4
+  C:0A20H         LINE#         5
+  C:0A22H         LINE#         6
+  C:0A27H         LINE#         7
+  C:0A2AH         LINE#         8
+  C:0A2CH         LINE#         9
+  C:0A2CH         LINE#         10
+  C:0A2CH         LINE#         11
+  C:0A2FH         LINE#         12
+  C:0A32H         LINE#         13
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        WDT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0A45H         PUBLIC        WDTInit
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0A4BH         PUBLIC        EnableWDT
+  D:00E1H         PUBLIC        WDT_CONTR
+  C:0A4FH         PUBLIC        ClearWDT
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          ENABLEWDT
+  C:0A4BH         LINE#         4
+  C:0A4BH         LINE#         5
+  C:0A4BH         LINE#         6
+  C:0A4EH         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/13/2021  00:32:15  PAGE 4
+
+
+  -------         ENDPROC       ENABLEWDT
+  -------         PROC          CLEARWDT
+  C:0A4FH         LINE#         14
+  C:0A4FH         LINE#         15
+  C:0A4FH         LINE#         16
+  C:0A52H         LINE#         17
+  -------         ENDPROC       CLEARWDT
+  -------         PROC          WDTINIT
+  C:0A45H         LINE#         19
+  C:0A45H         LINE#         20
+  C:0A45H         LINE#         21
+  C:0A48H         LINE#         22
+  -------         ENDPROC       WDTINIT
+  -------         ENDMOD        WDT
+
+  -------         MODULE        TIMEBASE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0927H         PUBLIC        TimeBause
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  C:0A34H         PUBLIC        _Timer0Init
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _TIMER0INIT
+  D:0007H         SYMBOL        us
+  C:0A34H         LINE#         3
+  C:0A34H         LINE#         4
+  C:0A34H         LINE#         5
+  C:0A37H         LINE#         6
+  C:0A3AH         LINE#         7
+  C:0A40H         LINE#         8
+  C:0A42H         LINE#         9
+  C:0A44H         LINE#         11
+  -------         ENDPROC       _TIMER0INIT
+  -------         PROC          TIMEBAUSE
+  -------         DO            
+  X:0014H         SYMBOL        Time
+  -------         ENDDO         
+  C:0927H         LINE#         14
+  C:094BH         LINE#         18
+  C:0959H         LINE#         19
+  C:096AH         LINE#         20
+  C:096AH         LINE#         21
+  C:096EH         LINE#         22
+  C:0971H         LINE#         23
+  C:0971H         LINE#         25
+  -------         ENDPROC       TIMEBAUSE
+  -------         ENDMOD        TIMEBASE
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/13/2021  00:32:15  PAGE 5
+
+
+
+  -------         MODULE        TASK
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  X:0000H         SYMBOL        Task_Strtuct1
+  C:0A53H         PUBLIC        Task_1
+  C:0A57H         PUBLIC        Task_2
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0993H         PUBLIC        Task_Process
+  D:00C8H         PUBLIC        T2CON
+  C:0800H         PUBLIC        Task_Inquiry
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TASK_1
+  C:0A53H         LINE#         14
+  C:0A53H         LINE#         15
+  C:0A53H         LINE#         16
+  C:0A56H         LINE#         17
+  -------         ENDPROC       TASK_1
+  -------         PROC          TASK_2
+  C:0A57H         LINE#         18
+  C:0A57H         LINE#         19
+  C:0A57H         LINE#         20
+  C:0A5AH         LINE#         21
+  -------         ENDPROC       TASK_2
+  -------         PROC          TASK_PROCESS
+  -------         DO            
+  X:0016H         SYMBOL        i
+  -------         ENDDO         
+  C:0993H         LINE#         30
+  C:0993H         LINE#         31
+  C:0993H         LINE#         32
+  C:0998H         LINE#         33
+  C:09A3H         LINE#         34
+  C:09A3H         LINE#         35
+  C:09B4H         LINE#         36
+  C:09B4H         LINE#         37
+  C:09C7H         LINE#         38
+  C:09DEH         LINE#         39
+  C:09DEH         LINE#         41
+  C:09E6H         LINE#         43
+  -------         ENDPROC       TASK_PROCESS
+  -------         PROC          TASK_INQUIRY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         46
+  C:0800H         LINE#         47
+  C:0800H         LINE#         48
+  C:0802H         LINE#         50
+  C:0802H         LINE#         51
+  C:0802H         LINE#         54
+  C:0817H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/13/2021  00:32:15  PAGE 6
+
+
+  C:0843H         LINE#         56
+  C:0843H         LINE#         57
+  C:0854H         LINE#         58
+  C:0854H         LINE#         59
+  C:087FH         LINE#         60
+  C:087FH         LINE#         61
+  C:0891H         LINE#         62
+  C:0891H         LINE#         64
+  C:089AH         LINE#         65
+  -------         ENDPROC       TASK_INQUIRY
+  -------         ENDMOD        TASK
+
+  -------         MODULE        ?C?IILDX
+  C:0A04H         PUBLIC        ?C?IILDX
+  -------         ENDMOD        ?C?IILDX
+
+  -------         MODULE        ?C?ICALL
+  C:0A1AH         PUBLIC        ?C?ICALL
+  C:0A1EH         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01C4H BYTE (22%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=23 code=609
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

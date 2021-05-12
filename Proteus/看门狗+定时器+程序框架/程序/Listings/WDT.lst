@@ -1,0 +1,48 @@
+C51 COMPILER V9.54   WDT                                                                   05/13/2021 00:32:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE WDT
+OBJECT MODULE PLACED IN .\Objects\WDT.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE APP\WDT\WDT.c LARGE OPTIMIZE(8,SPEED) BROWSE MODP2 INCDIR(.\APP\WDT;.\AP
+                    -P\Task;.\APP\TimeBase) DEBUG OBJECTEXTEND PRINT(.\Listings\WDT.lst) TABS(2) OBJECT(.\Objects\WDT.obj)
+
+line level    source
+
+   1          #include "include.h"
+   2          
+   3          //Ê¹ÄÜWDT
+   4          void EnableWDT(void)
+   5          {
+   6   1        WDT_CONTR |= 0x20;
+   7   1      }
+   8          
+   9          //void NoEnableWDT(void)
+  10          //{
+  11          //    WDT_CONTR &= 0xDF;
+  12          //}
+  13          
+  14          void ClearWDT(void)
+  15          {
+  16   1        WDT_CONTR |= 0x01;
+  17   1      }
+  18          
+  19          void WDTInit(void)
+  20          {
+  21   1        WDT_CONTR = 0x18;//65.5ms
+  22   1        EnableWDT();
+  23   1      }
+  24          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     14    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
